@@ -1,0 +1,7 @@
+{
+  "name": "RecetasJD",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
