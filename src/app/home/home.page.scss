@@ -1,27 +1,42 @@
-#container {
+swiper-container {
+  width: 100%;
+  height: 100%;
+}
+swiper-slide {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+background-color:darkblue;
+}
+.title1 {
+  
+color: darkblue;
+text-align: center;
+}
+.bg-color-slide {
+  background-image: url('/assets/images/FondoBarber.jpeg'); /* Asegúrate de usar url() */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.titulo{
+  align-items: center;
   text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  color: red;
+}
+::ng-deep swiper-container {
+  /* Personalizar la transición */
+  .swiper-slide {
+    transition: opacity 0.5s ease-in-out; /* Transición suave */
+  }
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+::ng-deep .swiper-container-fade .swiper-slide {
+  opacity: 0; /* Inicialmente, las diapositivas estarán invisibles */
+  transition: opacity 1s ease-in-out; /* Ajuste para el efecto fade */
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
+::ng-deep .swiper-slide-active {
+  opacity: 1 !important; /* La diapositiva activa será visible */
 }
