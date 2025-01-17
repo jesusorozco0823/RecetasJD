@@ -1,0 +1,88 @@
+/* General del contenido */
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Ocupa toda la pantalla */
+    background: linear-gradient(135deg, #cccccc, #ffffff); /* Fondo oscuro degradado */
+    color: rgb(0, 0, 0);
+    padding: 20px;
+}
+  /* Estilo del avatar */
+  .userlogin {
+    margin: 20px auto;
+    width: 120px;
+    height: 120px;
+    border: 2px solid #4b0d7e; /* Borde dorado alrededor del avatar */
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(109, 86, 240, 0.5); /* Sombra elegante */
+    object-fit: fill;
+  }
+  
+  /* Formulario */
+  .formlogin {
+    width: 100%;
+    max-width: 400px; /* Limita el ancho máximo del formulario */
+    background-color:#4b0d7e; /* Fondo negro semitransparente */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6); /* Sombra para el formulario */
+    color: #ffffff; /* Texto blanco */
+  }
+  
+  /* Campos de entrada */
+  ion-input {
+    --background: rgba(255, 255, 255, 0.1); /* Fondo oscuro translúcido */
+    --color: white; /* Texto blanco */
+    --placeholder-color: rgba(255, 255, 255, 0.7); /* Color del placeholder */
+    --highlight-color-focused: #ffc107; /* Color dorado al enfocarse */
+    border: 1px solid #6c757d; /* Borde gris oscuro */
+    border-radius: 5px; /* Bordes redondeados */
+    margin: 10px 0; /* Espaciado entre los campos */
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+  }
+  
+  ion-input:focus {
+    border: 1px solid #ffc107; /* Resalta el borde en dorado al enfocar */
+  }
+  
+  /* Etiquetas de error */
+  ion-label[color="danger"] {
+    font-size: 12px;
+    color: #ff6b6b; /* Rojo elegante para los errores */
+    margin: 5px 0 0 5px;
+  }
+  
+  /* Botón */
+  ion-button {
+    --background: #2d2969; /* Color dorado para el botón */
+    --background-hover: #111a38; /* Dorado más claro al pasar el cursor */
+    --color: #ffffff; /* Texto negro en el botón */
+    margin: 15px 0;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 50px; /* Botón redondeado */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Sombra elegante */
+  }
+  
+  ion-button:disabled {
+    --background: #6c757d; /* Color gris para deshabilitado */
+    cursor: not-allowed;
+  }
+  
+  /* Texto de recuperación de contraseña */
+  h5 {
+    text-align: center;
+    font-size: 14px;
+    color: #cfd8dc; /* Gris claro */
+    margin-top: 15px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  h5:hover {
+    color: #ffc107; /* Cambia a dorado al pasar el cursor */
+  }  

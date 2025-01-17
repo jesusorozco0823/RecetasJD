@@ -1,0 +1,32 @@
+<ion-content class="login">
+  <ion-avatar class="userlogin">
+    <img alt="Silhouette of a person's head" src="/assets/images/logo.jpg" />
+  </ion-avatar>
+  <br>
+  <form [formGroup]="loginForm" (ngsubmit)="loginUser(loginForm.valid)" class="formlogin">
+    <ion-input label="Correo" type="email" label-placement="floating" fill="solid" placeholder="Example@email.com" formControlName="email"></ion-input>
+    <div>
+      <ng-container *ngFor="let error of FormErros.email">
+        <ion-label color="danger" 
+        *ngIf="(loginForm.get('email')?.hasError(error.type) && loginForm.get('email')?.dirty)">
+          {{ error.message }}
+        </ion-label>
+      </ng-container>
+    </div>
+    <ion-input label="Contraseña" type="password" label-Placement="floating" fill="solid" placeholder="Password" formControlName="password"></ion-input>
+    <div>
+      <ng-container *ngFor="let error of FormErros.password">
+        <ion-label color="danger" 
+        *ngIf="(loginForm.get('password')?.hasError(error.type) && loginForm.get('password')?.dirty)">
+          {{ error.message }}
+        </ion-label>
+      </ng-container>
+    </div>
+    <br>
+    <ion-button color="light" shape="round" type="submit" [disabled]="!loginForm.valid">
+      <h2>INICIO</h2>
+    </ion-button>
+    <br>
+    <h5> olvido su Contraseña? </h5>
+  </form>
+</ion-content>
