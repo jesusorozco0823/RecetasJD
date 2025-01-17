@@ -1,5 +1,11 @@
-/* General del contenido */
-.login {
+/* Asegúrate de que html y body tienen altura del 100% */
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  /* General del contenido */
+  .login {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -8,7 +14,9 @@
     background: linear-gradient(135deg, #cccccc, #ffffff); /* Fondo oscuro degradado */
     color: rgb(0, 0, 0);
     padding: 20px;
-}
+    box-sizing: border-box; /* Asegura que el padding no afecte el tamaño */
+  }
+  
   /* Estilo del avatar */
   .userlogin {
     margin: 20px auto;
@@ -24,18 +32,22 @@
   .formlogin {
     width: 100%;
     max-width: 400px; /* Limita el ancho máximo del formulario */
-    background-color:#4b0d7e; /* Fondo negro semitransparente */
+    background-color: #4b0d7e; /* Fondo negro semitransparente */
     border-radius: 10px; /* Bordes redondeados */
     padding: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6); /* Sombra para el formulario */
-    color: #ffffff; /* Texto blanco */
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.6); /* Sombra para el formulario */
+    color: #000000; /* Texto blanco */
+    margin: auto; /* Asegura que el formulario se centre */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   
   /* Campos de entrada */
   ion-input {
-    --background: rgba(255, 255, 255, 0.1); /* Fondo oscuro translúcido */
-    --color: white; /* Texto blanco */
-    --placeholder-color: rgba(255, 255, 255, 0.7); /* Color del placeholder */
+    --background: rgba(98, 97, 192, 0.664); /* Fondo oscuro translúcido */
+    --color: rgb(0, 0, 0); /* Texto blanco */
+    --placeholder-color: rgba(0, 0, 0, 0.7); /* Color del placeholder */
     --highlight-color-focused: #ffc107; /* Color dorado al enfocarse */
     border: 1px solid #6c757d; /* Borde gris oscuro */
     border-radius: 5px; /* Bordes redondeados */
@@ -85,4 +97,5 @@
   
   h5:hover {
     color: #ffc107; /* Cambia a dorado al pasar el cursor */
-  }  
+  }
+  
