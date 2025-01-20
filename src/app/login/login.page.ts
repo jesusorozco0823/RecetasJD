@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';// importamos para hacer el formulario
+import { AuthService } from '../services/auth.service';
+import { NavController } from '@ionic/angular';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +24,10 @@ export class LoginPage implements OnInit {
     ]
   }
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private navCtrl: NavController,
+    private storage: Storage
   ) { 
     this.loginForm = this.formBuilder.group({
       email: new FormControl('', Validators.compose([
@@ -38,6 +44,15 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
   loginUser(credentials: any){
-    console.log(Credential, "credenciales de login")
+    console.log(credentials, "credenciales de login")
+    this.authService.login(credentials).then( res => {
+      console.log(res);
+      this.storage.set('isUserLoggedIn', true);
+      this.errorMessage = '';
+      this.navCtrl.navigateForward('/home');
+    }).catch(err => {
+      console.log(err);
+      this.errorMessage = err;
+    });
   }
 }

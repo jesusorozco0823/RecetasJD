@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Character } from './home.model';
 
 @Component({
   selector: 'app-home',
@@ -6,8 +8,19 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
   standalone: false,
 })
-export class HomePage {
+export class HomePage implements OnInit {
 
-  constructor() {}
+  characters: Character[] = []
+
+  constructor(
+    private http: HttpClient
+  ) {}
+
+  ngOnInit(){
+    this.http.get<{ results: Character[] }>('https://rickandmortyapi.com/api/character').subscribe(res => {
+      console.log(res);
+      this.characters = res.results;
+    })
+  }
 
 }
