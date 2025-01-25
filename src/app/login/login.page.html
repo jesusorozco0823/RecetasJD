@@ -3,7 +3,7 @@
     <img alt="Silhouette of a person's head" src="/assets/images/logo.jpg" />
   </ion-avatar>
   <br>
-  <form [formGroup]="loginForm" (ngsubmit)="loginUser(loginForm.valid)" class="formlogin">
+  <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)" class="formlogin">
     <ion-input label="Correo" type="email" label-placement="floating" fill="solid" placeholder="Example@email.com" formControlName="email"></ion-input>
     <div>
       <ng-container *ngFor="let error of FormErros.email">
@@ -27,6 +27,11 @@
       <h2>INICIO</h2>
     </ion-button>
     <br>
+   
+    <a href="/register" class="registro"><h5>REGISTRO</h5></a>
     <h5> olvido su Contraseña? </h5>
+    <!-- <ion-button color="light" shape="round" (click)="Register()">Registrese</ion-button> -->
   </form>
+  
+  <p>{{errorMessage}}</p>
 </ion-content>

@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="titulo">Registro</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="Atras" defaultHref="/login"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="form-container">
+    <form
+      [formGroup]="registerForm"
+      (ngSubmit)="registerUser(registerForm.value)"
+      autocomplete="off"
+      class="formlogin"
+    >
+      <ion-item>
+        <ion-input
+          label="Nombre"
+          labelPlacement="floating"
+          placeholder="Ingresa tu nombre"
+          formControlName="name"
+          autocomplete="off"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          label="Apellido"
+          labelPlacement="floating"
+          placeholder="Ingresa tu apellido"
+          formControlName="lastname"
+          autocomplete="off"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          label="Correo"
+          labelPlacement="floating"
+          placeholder="example@email.com"
+          formControlName="email"
+          autocomplete="off"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          label="Usuario"
+          labelPlacement="floating"
+          placeholder="Nombre de usuario"
+          formControlName="username"
+          autocomplete="off"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          type="password"
+          label="Contraseña"
+          labelPlacement="floating"
+          placeholder="Ingresa tu contraseña"
+          formControlName="password"
+          autocomplete="off"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          type="password"
+          label="Confirmar Contraseña"
+          labelPlacement="floating"
+          placeholder="Confirma tu contraseña"
+          formControlName="passwordConfirmation"
+          autocomplete="off"
+        ></ion-input>
+      </ion-item>
+      <ion-button type="submit" [disabled]="!registerForm.valid">
+        Registrar
+      </ion-button>
+    </form>
+</ion-content>

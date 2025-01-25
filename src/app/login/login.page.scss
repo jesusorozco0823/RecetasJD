@@ -11,7 +11,7 @@ html, body {
     justify-content: center;
     align-items: center;
     height: 100%; /* Ocupa toda la pantalla */
-    background: linear-gradient(135deg, #cccccc, #ffffff); /* Fondo oscuro degradado */
+    background: linear-gradient(to bottom, #4facfe, #00f2fe); /* Fondo oscuro degradado */
     color: rgb(0, 0, 0);
     padding: 20px;
     box-sizing: border-box; /* Asegura que el padding no afecte el tamaño */
@@ -32,7 +32,7 @@ html, body {
   .formlogin {
     width: 100%;
     max-width: 400px; /* Limita el ancho máximo del formulario */
-    background-color: #4b0d7e; /* Fondo negro semitransparente */
+    background: linear-gradient(to bottom, #4facfe, #00f2fe); /* Fondo oscuro degradado */
     border-radius: 10px; /* Bordes redondeados */
     padding: 20px;
     box-shadow: 0 4px 20px rgba(255, 255, 255, 0.6); /* Sombra para el formulario */
@@ -97,5 +97,8 @@ html, body {
   
   h5:hover {
     color: #ffc107; /* Cambia a dorado al pasar el cursor */
+  }
+  .registro{
+    color: white;
   }
   

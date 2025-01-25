@@ -1,0 +1,71 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Asegura que ocupa toda la pantalla */
+  background: linear-gradient(to bottom, #3c2a21, #d5b891); /* Degradado cálido */
+  color: rgb(255, 255, 255); /* Texto blanco */
+  padding: 20px;
+  box-sizing: border-box; /* Asegura que el padding no afecta el tamaño */
+}
+
+.titulo {
+  text-align: center;
+  color: #d5b891; /* Color dorado claro */
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px; /* Espacio debajo del título */
+}
+
+.formlogin {
+  width: 100%;
+  max-width: 400px; /* Limita el ancho máximo del formulario */
+  background: rgba(60, 42, 33, 0.8); /* Fondo oscuro translúcido */
+  border-radius: 10px; /* Bordes redondeados */
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Sombra suave */
+  margin: auto; /* Centrado */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+ion-item {
+  --background: transparent; /* Elimina el fondo blanco de los ion-item */
+  --inner-border-color: transparent; /* Elimina las líneas internas */
+  margin: 10px 0; /* Espaciado entre campos */
+}
+
+ion-input {
+  --background: rgba(213, 184, 145, 0.3); /* Fondo beige translúcido */
+  --color: #ffffff; /* Texto blanco */
+  --placeholder-color: rgba(255, 255, 255, 0.7); /* Placeholder translúcido */
+  --highlight-color-focused: #d5b891; /* Dorado al enfocarse */
+  border: 1px solid #d5b891; /* Borde dorado */
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+ion-input:focus {
+  border: 1px solid #ffe4c4; /* Dorado más claro al enfocar */
+  box-shadow: 0 0 8px rgba(213, 184, 145, 0.7); /* Brillo sutil */
+}
+
+ion-button {
+  --background: linear-gradient(to right, #3c2a21, #d5b891); /* Degradado elegante */
+  --background-hover: #d5b891; /* Dorado al pasar el cursor */
+  --color: #000000; /* Texto negro */
+  margin: 15px 0;
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 50px; /* Botón redondeado */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Sombra elegante */
+}
+
+ion-button:disabled {
+  --background: #6c757d; /* Gris oscuro para deshabilitado */
+  cursor: not-allowed;
+}
