@@ -1,104 +1,100 @@
-/* Asegúrate de que html y body tienen altura del 100% */
 html, body {
-    height: 100%;
-    margin: 0;
-  }
-  
-  /* General del contenido */
-  .login {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%; /* Ocupa toda la pantalla */
-    background: linear-gradient(to bottom, #4facfe, #00f2fe); /* Fondo oscuro degradado */
-    color: rgb(0, 0, 0);
-    padding: 20px;
-    box-sizing: border-box; /* Asegura que el padding no afecte el tamaño */
-  }
-  
-  /* Estilo del avatar */
-  .userlogin {
-    margin: 20px auto;
-    width: 120px;
-    height: 120px;
-    border: 2px solid #4b0d7e; /* Borde dorado alrededor del avatar */
-    border-radius: 50%;
-    box-shadow: 0 4px 10px rgba(109, 86, 240, 0.5); /* Sombra elegante */
-    object-fit: fill;
-  }
-  
-  /* Formulario */
-  .formlogin {
-    width: 100%;
-    max-width: 400px; /* Limita el ancho máximo del formulario */
-    background: linear-gradient(to bottom, #4facfe, #00f2fe); /* Fondo oscuro degradado */
-    border-radius: 10px; /* Bordes redondeados */
-    padding: 20px;
-    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.6); /* Sombra para el formulario */
-    color: #000000; /* Texto blanco */
-    margin: auto; /* Asegura que el formulario se centre */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  
-  /* Campos de entrada */
-  ion-input {
-    --background: rgba(98, 97, 192, 0.664); /* Fondo oscuro translúcido */
-    --color: rgb(0, 0, 0); /* Texto blanco */
-    --placeholder-color: rgba(0, 0, 0, 0.7); /* Color del placeholder */
-    --highlight-color-focused: #ffc107; /* Color dorado al enfocarse */
-    border: 1px solid #6c757d; /* Borde gris oscuro */
-    border-radius: 5px; /* Bordes redondeados */
-    margin: 10px 0; /* Espaciado entre los campos */
-    padding: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Sombra sutil */
-  }
-  
-  ion-input:focus {
-    border: 1px solid #ffc107; /* Resalta el borde en dorado al enfocar */
-  }
-  
-  /* Etiquetas de error */
-  ion-label[color="danger"] {
-    font-size: 12px;
-    color: #ff6b6b; /* Rojo elegante para los errores */
-    margin: 5px 0 0 5px;
-  }
-  
-  /* Botón */
-  ion-button {
-    --background: #2d2969; /* Color dorado para el botón */
-    --background-hover: #111a38; /* Dorado más claro al pasar el cursor */
-    --color: #ffffff; /* Texto negro en el botón */
-    margin: 15px 0;
-    width: 100%;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 50px; /* Botón redondeado */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Sombra elegante */
-  }
-  
-  ion-button:disabled {
-    --background: #6c757d; /* Color gris para deshabilitado */
-    cursor: not-allowed;
-  }
-  
-  /* Texto de recuperación de contraseña */
-  h5 {
-    text-align: center;
-    font-size: 14px;
-    color: #cfd8dc; /* Gris claro */
-    margin-top: 15px;
-    cursor: pointer;
-    transition: color 0.3s ease;
-  }
-  
-  h5:hover {
-    color: #ffc107; /* Cambia a dorado al pasar el cursor */
-  }
-  .registro{
-    color: white;
-  }
-  
+  height: 100%;
+  margin: 0;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background: linear-gradient(to bottom, #3a003f, #6e007d);
+  color: #ffffff;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.userlogin {
+  margin: 20px auto;
+  width: 120px;
+  height: 120px;
+  border: 2px solid #f2e7d5;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(242, 231, 213, 0.5);
+  object-fit: fill;
+}
+
+.formlogin {
+  width: 100%;
+  max-width: 400px;
+  background: rgba(58, 0, 63, 0.8);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+ion-input {
+  --background: rgba(242, 231, 213, 0.2);
+  --color: #ffffff;
+  --placeholder-color: rgba(255, 255, 255, 0.7);
+  --highlight-color-focused: #f2e7d5;
+  border: 1px solid #f2e7d5;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+ion-input:focus {
+  border-color: #ffe4c4;
+  box-shadow: 0 0 8px rgba(242, 231, 213, 0.8);
+}
+
+ion-label[color="danger"] {
+  font-size: 12px;
+  color: #f75c5c;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+ion-button {
+  --background: linear-gradient(to right, #6e007d, #f2e7d5);
+  --background-hover: #f2e7d5;
+  --color: #3a003f;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 50px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  margin-top: 15px;
+  padding: 10px;
+}
+
+ion-button:disabled {
+  --background: #5e4a56;
+  --color: #ffffff;
+  cursor: not-allowed;
+}
+
+h5 {
+  text-align: center;
+  font-size: 14px;
+  color: #f2e7d5;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+h5:hover {
+  color: #d4a373;
+}
+
+.registro {
+  color: #ffffff;
+}
