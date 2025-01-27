@@ -1,3 +1,71 @@
-.todo1{
-    background-color: black;
-}
+// .todo1{
+//     background-color: black;
+// }
+ion-content {
+    --background: #f9f9f9; 
+    text-align: center; 
+    padding: 20px;
+  }
+  
+  ion-avatar {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 10px auto; 
+    cursor: pointer; 
+    border: 2px solid #2f00ff; 
+    border-radius: 50%; 
+    overflow: hidden;
+  }
+  
+  ion-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+  }
+  
+  ion-title {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #000000; 
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-size: 1rem;
+    color: #000000; 
+    margin: 5px 0;
+  }
+  
+  p span {
+    font-weight: bold; 
+    color: #000000;
+  }
+  
+  ion-toolbar {
+    --background: #090086; 
+    color: rgb(0, 0, 0); 
+  }
+  
+  ion-menu-button {
+    color: rgb(255, 255, 255); 
+  }
+  
+  @media screen and (min-width: 768px) {
+    ion-content {
+      padding: 40px;
+    }
+  
+    ion-avatar {
+      width: 120px;
+      height: 120px;
+    }
+  
+    ion-title {
+      font-size: 2rem;
+    }
+  
+    p {
+      font-size: 1.2rem;
+    }
+  }
+  

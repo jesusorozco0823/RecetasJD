@@ -25,4 +25,13 @@ export class MenuPage implements OnInit {
     this.storage.remove("isUserloggeIn")
     this.navCtrl.navigateRoot("/login");
   }
+  account(){
+    this.navCtrl.navigateRoot("/menu/account");
+  }
+  home(){
+    this.navCtrl.navigateRoot("/menu/home");
+  }
+  intro(){
+    this.navCtrl.navigateRoot("/intro");
+  }
 }

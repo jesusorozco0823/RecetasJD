@@ -11,8 +11,17 @@
       </ion-toolbar>
     </ion-header>
     <ion-content>
+      <ion-item (click)="home()">
+        <ion-icon name="home-outline"></ion-icon> Inicio 
+      </ion-item>
+      <ion-item (click)="account()">
+        <ion-icon name="person-outline"></ion-icon> Account 
+      </ion-item>
+      <ion-item (click)="intro()">
+        <ion-icon name="compass-outline"></ion-icon> Intro 
+      </ion-item>
       <ion-item (click)="log_out()">
-        Cerrar sesión <ion-icon name="log-out-outline"></ion-icon>
+        <ion-icon name="log-out-outline"></ion-icon> Cerrar sesión 
       </ion-item>
     </ion-content>
   </ion-menu>
