@@ -45,8 +45,9 @@ export class LoginPage implements OnInit {
   }
   loginUser(credentials: any){
     console.log(credentials, "credenciales de login")
-    this.authService.login(credentials).then( res => {
+    this.authService.login(credentials).then((res: any) => {
       console.log(res);
+      this.storage.set('user', res.user);
       this.storage.set('isUserLoggedIn', true);
       this.errorMessage = '';
       this.navCtrl.navigateForward('/menu/home');
@@ -55,8 +56,8 @@ export class LoginPage implements OnInit {
       this.errorMessage = err;
     });
   }
-  Register(){
-    console.log('Register');
-    this.navCtrl.navigateForward('/register'); 
-  }
+  // Register(){
+  //   console.log('Register');
+  //   this.navCtrl.navigateForward('/register'); 
+  // }
 }

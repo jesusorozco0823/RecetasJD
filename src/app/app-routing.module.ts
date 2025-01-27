@@ -5,10 +5,10 @@ import { loginGuard } from './guards/login.guard';
 import { LoginPage } from './login/login.page';
 
 const routes: Routes = [
-  {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule), canActivate: [loginGuard, IntroGuard]
-  },
+  // {
+  //   path: 'home',
+  //   loadChildren: () => import('./home/home.module').then( m => m.HomePageModule), canActivate: [loginGuard, IntroGuard]
+  // },
   {
     path: '',
     redirectTo: 'menu/home',
@@ -28,7 +28,11 @@ const routes: Routes = [
   },
   {
     path: 'menu',
-    loadChildren: () => import('./menu/menu.module').then( m => m.MenuPageModule), canActivate: [loginGuard]
+    loadChildren: () => import('./menu/menu.module').then( m => m.MenuPageModule), canActivate: [IntroGuard, loginGuard]
+  },
+  {
+    path: 'add-post-modal',
+    loadChildren: () => import('./add-post-modal/add-post-modal.module').then( m => m.AddPostModalPageModule)
   },
 ];
 

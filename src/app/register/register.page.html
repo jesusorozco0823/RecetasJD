@@ -7,71 +7,55 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="form-container">
-    <form
-      [formGroup]="registerForm"
-      (ngSubmit)="registerUser(registerForm.value)"
-      autocomplete="off"
-      class="formlogin"
-    >
-      <ion-item>
-        <ion-input
-          label="Nombre"
-          labelPlacement="floating"
-          placeholder="Ingresa tu nombre"
-          formControlName="name"
-          autocomplete="off"
-        ></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input
-          label="Apellido"
-          labelPlacement="floating"
-          placeholder="Ingresa tu apellido"
-          formControlName="lastname"
-          autocomplete="off"
-        ></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input
-          label="Correo"
-          labelPlacement="floating"
-          placeholder="example@email.com"
-          formControlName="email"
-          autocomplete="off"
-        ></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input
-          label="Usuario"
-          labelPlacement="floating"
-          placeholder="Nombre de usuario"
-          formControlName="username"
-          autocomplete="off"
-        ></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input
-          type="password"
-          label="Contraseña"
-          labelPlacement="floating"
-          placeholder="Ingresa tu contraseña"
-          formControlName="password"
-          autocomplete="off"
-        ></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input
-          type="password"
-          label="Confirmar Contraseña"
-          labelPlacement="floating"
-          placeholder="Confirma tu contraseña"
-          formControlName="passwordConfirmation"
-          autocomplete="off"
-        ></ion-input>
-      </ion-item>
-      <ion-button type="submit" [disabled]="!registerForm.valid">
-        Registrar
-      </ion-button>
-    </form>
+<ion-content>
+  <form [formGroup]="registerForm" (ngSubmit)="registerUser(registerForm.value)">
+    <ion-input label="Nombre" label-placement="floating" fill="solid" placeholder="Digite su nombre" formControlName="name"></ion-input>
+    <ng-container *ngFor="let error of FormErros.name">
+      <ion-label color="danger" 
+      *ngIf="(registerForm.get('name')?.hasError(error.type) && registerForm.get('name')?.dirty)">
+        {{ error.message }}
+      </ion-label>
+    </ng-container>
+    <ion-input label="Apellido" label-placement="floating" fill="solid" placeholder="Digite su apellido" formControlName="last_name"></ion-input>
+    <ng-container *ngFor="let error of FormErros.last_name">
+      <ion-label color="danger" 
+      *ngIf="(registerForm.get('last_name')?.hasError(error.type) && registerForm.get('last_name')?.dirty)">
+        {{ error.message }}
+      </ion-label>
+    </ng-container>
+    <ion-input label="Usuario" label-placement="floating" fill="solid" placeholder="Digite su usuario" formControlName="username"></ion-input>
+    <ng-container *ngFor="let error of FormErros.username">
+      <ion-label color="danger" 
+      *ngIf="(registerForm.get('username')?.hasError(error.type) && registerForm.get('username')?.dirty)">
+        {{ error.message }}
+      </ion-label>
+    </ng-container>
+    <ion-input label="Email" type="email" label-placement="floating" fill="solid" placeholder="Example@email.com" formControlName="email"></ion-input>
+    <ng-container *ngFor="let error of FormErros.email">
+      <ion-label color="danger" 
+      *ngIf="(registerForm.get('email')?.hasError(error.type) && registerForm.get('email')?.dirty)">
+        {{ error.message }}
+      </ion-label>
+    </ng-container>
+    <ion-input label="Contraseña" type="password" label-Placement="floating" fill="solid" placeholder="Digite su contraseña" formControlName="password"></ion-input>   
+    <ng-container *ngFor="let error of FormErros.password">
+      <ion-label color="danger" 
+      *ngIf="(registerForm.get('password')?.hasError(error.type) && registerForm.get('password')?.dirty)">
+        {{ error.message }}
+      </ion-label>
+    </ng-container>
+    <ion-input label="Confirmar contraseña" type="password" label-Placement="floating" fill="solid" placeholder="Confirme su contraseña" formControlName="password_confirmation"></ion-input>
+    <ng-container *ngFor="let error of FormErros.password_confirmation">
+      <ion-label color="danger" 
+      *ngIf="(registerForm.get('password_confirmation')?.hasError(error.type) && registerForm.get('password_confirmation')?.dirty)">
+        {{ error.message }}
+      </ion-label>
+    </ng-container>
+    <br>
+    <div class="btnRegistro">
+      <ion-button color="light" shape="round" type="submit" [disabled]="!registerForm.valid"  >
+        <h2>registro</h2>
+      </ion-button>  
+    </div>
+  </form>
 </ion-content>

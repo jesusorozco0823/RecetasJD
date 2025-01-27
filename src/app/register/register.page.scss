@@ -69,3 +69,87 @@ ion-button:disabled {
   --background: #6c757d; /* Gris oscuro para deshabilitado */
   cursor: not-allowed;
 }
+
+
+/* Estilo del contenedor principal */
+ion-content {
+  --background: linear-gradient(to bottom, #3c2a21, #d5b891); /* Degradado cálido */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Altura completa de la pantalla */
+  color: #ffffff; /* Texto blanco */
+}
+
+/* Estilo del formulario */
+form {
+  width: 100%;
+  max-width: 400px; /* Limita el ancho del formulario */
+  background:rgba(60, 42, 33, 0.8);
+  padding: 20px;
+  border-radius: 10px; 
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); 
+  box-sizing: border-box;
+}
+
+/* Título del formulario */
+.titulo {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #d5b891; /* Color dorado claro */
+  margin-bottom: 20px;
+}
+
+/* Espaciado entre elementos */
+ion-input,
+ion-label {
+  margin: 10px 0;
+  width: 100%; 
+}
+
+ion-input {
+  --background: rgba(213, 184, 145, 0.3); 
+  --color: #ffffff; /* Texto blanco */
+  --placeholder-color: rgba(255, 255, 255, 0.7);
+  --highlight-color-focused: #d5b891;
+  border: 1px solid #d5b891; 
+  border-radius: 8px; 
+  padding: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); 
+}
+
+ion-input:focus {
+  border-color: #ffe4c4; 
+  box-shadow: 0 0 8px rgba(213, 184, 145, 0.7);
+}
+
+ion-label[color="danger"] {
+  font-size: 12px;
+  color: #ff6b6b; 
+  margin-top: -10px;
+  margin-bottom: 10px;
+  display: block; 
+}
+
+.btnRegistro ion-button {
+  --background: linear-gradient(to right, #3c2a21, #d5b891); 
+  --background-hover: #d5b891; 
+  --color: #000000; 
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 50px; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); 
+  width: 100%;
+  margin-top: 15px;
+  padding: 10px;
+}
+
+.btnRegistro ion-button:disabled {
+  --background: #6c757d; 
+  --color: #ffffff; 
+  cursor: not-allowed;
+}
+.br {
+  margin-bottom: 15px;
+}

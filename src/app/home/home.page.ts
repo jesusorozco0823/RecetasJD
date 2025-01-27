@@ -1,26 +1,33 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Character } from './home.model';
-
+import { PostService } from '../services/post.service';
+import { ModalController } from '@ionic/angular';
+import { AddPostModalPage } from '../add-post-modal/add-post-modal.page';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  styleUrls: ['home.page.scss'],  
   standalone: false,
 })
-export class HomePage implements OnInit {
-
-  characters: Character[] = []
-
+export class HomePage {
+  posts: any;
   constructor(
-    private http: HttpClient
+    private postService: PostService,
+    private modalController: ModalController
   ) {}
 
   ngOnInit(){
-    this.http.get<{ results: Character[] }>('https://rickandmortyapi.com/api/character').subscribe(res => {
-      console.log(res);
-      this.characters = res.results;
+    console.log('home page');
+    this.postService.getPosts().then((data: any) =>{
+      console.log(data);
+      this.posts = data;
     })
   }
-
+  async addPost(){
+    console.log("add Post");
+    const modal = await this.modalController.create({
+      component: AddPostModalPage,
+      componentProps:{}
+    });
+    return await modal.present();
+  }
 }

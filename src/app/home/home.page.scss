@@ -40,3 +40,18 @@ text-align: center;
 ::ng-deep .swiper-slide-active {
   opacity: 1 !important; /* La diapositiva activa será visible */
 }
+.users-avatar{
+  width: 30px;
+  height: 30px;
+  
+}
+.image-post{
+  margin: 0 auto;
+  display: block;
+}
+ion-fab{
+  ion-fab-button{
+      --background: grey;
+      --color: white;
+  }
+}
