@@ -34,4 +34,7 @@ export class MenuPage implements OnInit {
   intro(){
     this.navCtrl.navigateRoot("/intro");
   }
+  searchUsers(){
+    this.navCtrl.navigateRoot("/menu/search-users");
+  }
 }
