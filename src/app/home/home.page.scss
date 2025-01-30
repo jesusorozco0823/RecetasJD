@@ -18,7 +18,6 @@ swiper-slide {
 
 .bg-color-slide {
   background-image: url('/assets/images/FondoBarber.jpeg');
-  /* Asegúrate de usar url() */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -31,24 +30,18 @@ swiper-slide {
 }
 
 ::ng-deep swiper-container {
-
-  /* Personalizar la transición */
   .swiper-slide {
     transition: opacity 0.5s ease-in-out;
-    /* Transición suave */
   }
 }
 
 ::ng-deep .swiper-container-fade .swiper-slide {
   opacity: 0;
-  /* Inicialmente, las diapositivas estarán invisibles */
   transition: opacity 1s ease-in-out;
-  /* Ajuste para el efecto fade */
 }
 
 ::ng-deep .swiper-slide-active {
   opacity: 1 !important;
-  /* La diapositiva activa será visible */
 }
 
 .image-post {
@@ -75,4 +68,17 @@ ion-chip {
 
 .full-text {
   white-space: normal;
+}
+ion-header {
+  ion-toolbar {
+    --background: var(--ion-color-primary);
+    border: none;
+
+    ion-buttons {
+      color: var(--ion-color-light);
+    }
+  }
+  ion-title{
+      color: white;
+  }
 }

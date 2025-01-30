@@ -77,6 +77,15 @@ export class AddPostModalPage implements OnInit {
       (data: any) => {
         console.log(data, 'post creado');
         this.modalController.dismiss({ null: null });
+        data.user = {
+          id: user.id,
+          name: user.name,
+          image: user.image || 'assets/avatar/avatar.png'
+        };
+        this.postService.postCreated.emit(data);
+        this.addPostForm.reset();
+        this.post_image = null;
+        this.modalController.dismiss();
       },
       (error) => {
         console.log(error, 'error');

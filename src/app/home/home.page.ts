@@ -13,6 +13,8 @@ export class HomePage {
   page: number = 1;
   limit: number = 10;
   hasMore: boolean = true;
+  isLoading: boolean = false;
+
   constructor(
     private postService: PostService,
     private modalController: ModalController
@@ -20,13 +22,9 @@ export class HomePage {
 
   ngOnInit() {
     console.log('home page');
-    this.postService.getPosts().then((data: any) => {
-      console.log(data);
-      this.posts = [];
-      data.filter((post: any) => {
-        this.posts.push({ ...post, showCompleteDescription: false });
-      })
-      console.log(this.posts);
+    this.loadPosts();
+    this.postService.postCreated.subscribe((newPost: any)=>{
+      this.posts.unshift(newPost);
     })
   }
 
@@ -49,6 +47,7 @@ export class HomePage {
 
   loadPosts(event?: any){
     console.log('Load Posts');
+    this.isLoading = true;
     this.postService.getPosts(this.page, this.limit).then(
       (data: any)=>{
         if (data.length > 0){
@@ -57,13 +56,14 @@ export class HomePage {
         }else{
           this.hasMore = false;
         }
-
+        this.isLoading = false;
         if (event){
           event.target.complete();
         }
       },
       (error)=>{
         console.log(error);
+        this.isLoading = false;
         if (event){
           event.target.complete();
         }

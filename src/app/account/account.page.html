@@ -2,33 +2,55 @@
   <ion-toolbar>
     <ion-buttons>
       <ion-menu-button></ion-menu-button>
-      <ion-title>Account</ion-title>
+      <ion-title>Perfil</ion-title>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
   <ion-card color="light">
-    <div class="img-wrapper">
-      <img [src]="user_data.image ? user_data.image : '/assets/img/defaul-avatar.jpeg'">
-      <ion-button (click)="takePhoto()" color="primary">
-        <ion-icon slot="icon-only" name="camera-outline" color="light">
-        </ion-icon>
-      </ion-button>
-    </div>
+    <ion-text color="medium">
+      <div class="img-wrapper">
+        <img [src]="user_data.image ? user_data.image : '/assets/avatar/avatar.png'">
+    
+        <!-- Botón flotante con opciones -->
+        <ion-fab slot="fixed" vertical="bottom" horizontal="center" style="margin-bottom: -30px; margin-right: 80px;">
+          <ion-fab-button color="primary" size="small">
+            <ion-icon name="add-outline"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-list side="start">
+            <ion-fab-button (click)="editUser()" color="primary">
+              <ion-icon name="create-outline"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button (click)="presentPhotoOptions()" color="primary">
+              <ion-icon name="camera-outline"></ion-icon>
+            </ion-fab-button>
+          </ion-fab-list>
+        </ion-fab>
+      </div>
+    </ion-text>
+    
     <ion-card-content class="ion-text-center">
       <h2>
         <strong>
           {{user_data.name |titlecase}} {{user_data.last_name | titlecase}}
         </strong>
       </h2>
+     
+
       <ion-text color="medium">
-        <div class="d-flex ion-justify-content-center">
-          <p><strong>{{user_data.followed_users.length}}</strong> Seguidores</p>
-          &nbsp;&nbsp;
-          <p><strong>{{user_data.following_users.length}}</strong> Siguiendo</p>
+        <div class="d-flex ion-justify-content-between" style="width: 100%; padding: 0 30px;">
+          <div style="display: flex; flex-direction: column; align-items: center;">
+            <p style="margin: 0; font-size: 16px; font-weight: bold;">{{user_data.followers.length}}</p>
+            <p style="margin: 0; color: rgb(0, 0, 0);">Seguidores</p>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: center;">
+            <p style="margin: 0; font-size: 16px; font-weight: bold;">{{user_data.followees.length}}</p>
+            <p style="margin: 0; color: rgb(0, 0, 0);">Siguiendo</p>
+          </div>
         </div>
       </ion-text>
+      
     </ion-card-content>
   </ion-card>
 </ion-content>

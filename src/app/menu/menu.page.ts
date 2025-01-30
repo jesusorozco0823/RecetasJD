@@ -39,5 +39,6 @@ export class MenuPage implements OnInit {
   }
   searchUsers(){
     this.navCtrl.navigateRoot("/menu/search-users");
+    this.closeMenu()
   }
 }
