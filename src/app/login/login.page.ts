@@ -11,6 +11,7 @@ import { Storage } from '@ionic/storage-angular';
   standalone: false,
 })
 export class LoginPage implements OnInit {
+  isToastOpen = false;
   loginForm: FormGroup;
   errorMessage: any;
   FormErros = {
@@ -28,22 +29,27 @@ export class LoginPage implements OnInit {
     private authService: AuthService,
     private navCtrl: NavController,
     private storage: Storage
-  ) { 
+  ) {
     this.loginForm = this.formBuilder.group({
       email: new FormControl('', Validators.compose([
         Validators.required,
         Validators.email
-    ])),
+      ])),
       password: new FormControl('', Validators.compose([
-      Validators.minLength(6),
-      Validators.required
-    ]))
+        Validators.minLength(6),
+        Validators.required
+      ]))
     })
   }
 
   ngOnInit() {
   }
-  loginUser(credentials: any){
+
+  setOpenToast(isOpen: boolean) {
+    this.isToastOpen = isOpen;
+  }
+
+  loginUser(credentials: any) {
     console.log(credentials, "credenciales de login")
     this.authService.login(credentials).then((res: any) => {
       console.log(res);
@@ -54,6 +60,7 @@ export class LoginPage implements OnInit {
     }).catch(err => {
       console.log(err);
       this.errorMessage = err;
+      this.setOpenToast(true)
     });
   }
   // Register(){

@@ -35,3 +35,24 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+.d-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* estilos globales para los input */
+.global-input {
+    background: transparent;
+    border-radius: 10px;
+    padding: 0rem 1rem !important;
+    color: var(--ion-color-dark);
+}
+
+/* estilos globales para los contenedores(div) de los mensajes de error o advertencia */
+.global-container-label-message {
+    background: transparent;
+    padding: 0rem 1rem !important;
+    margin: .5rem 0;
+}

@@ -2,56 +2,77 @@ swiper-container {
   width: 100%;
   height: 100%;
 }
+
 swiper-slide {
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-background-color:darkblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: darkblue;
 }
+
 .title1 {
-  
-color: darkblue;
-text-align: center;
+  color: darkblue;
+  text-align: center;
 }
+
 .bg-color-slide {
-  background-image: url('/assets/images/FondoBarber.jpeg'); /* Asegúrate de usar url() */
+  background-image: url('/assets/images/FondoBarber.jpeg');
+  /* Asegúrate de usar url() */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
-.titulo{
+
+.titulo {
   align-items: center;
   text-align: center;
   color: red;
 }
+
 ::ng-deep swiper-container {
+
   /* Personalizar la transición */
   .swiper-slide {
-    transition: opacity 0.5s ease-in-out; /* Transición suave */
+    transition: opacity 0.5s ease-in-out;
+    /* Transición suave */
   }
 }
 
 ::ng-deep .swiper-container-fade .swiper-slide {
-  opacity: 0; /* Inicialmente, las diapositivas estarán invisibles */
-  transition: opacity 1s ease-in-out; /* Ajuste para el efecto fade */
+  opacity: 0;
+  /* Inicialmente, las diapositivas estarán invisibles */
+  transition: opacity 1s ease-in-out;
+  /* Ajuste para el efecto fade */
 }
 
 ::ng-deep .swiper-slide-active {
-  opacity: 1 !important; /* La diapositiva activa será visible */
+  opacity: 1 !important;
+  /* La diapositiva activa será visible */
 }
-.users-avatar{
-  width: 30px;
-  height: 30px;
-  
-}
-.image-post{
+
+.image-post {
   margin: 0 auto;
   display: block;
 }
-ion-fab{
-  ion-fab-button{
-      --background: grey;
-      --color: white;
+
+ion-chip {
+  background: transparent;
+
+  ion-label {
+    font-size: 1.1rem;
+    font-weight: bold;
   }
+}
+
+.single-line-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  display: block;
+}
+
+.full-text {
+  white-space: normal;
 }

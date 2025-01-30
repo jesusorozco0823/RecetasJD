@@ -13,13 +13,13 @@ import { provideHttpClient } from '@angular/common/http';
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    BrowserModule, 
-    IonicModule.forRoot(), 
-    AppRoutingModule, 
+    BrowserModule,
+    IonicModule.forRoot({ mode: "md" }),
+    AppRoutingModule,
     IonicStorageModule.forRoot(), // AÑADIMOS EL MÓDULO DE STORAGE
     HttpClientModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, provideHttpClient()],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

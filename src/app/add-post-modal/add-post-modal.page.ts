@@ -21,8 +21,8 @@ export class AddPostModalPage implements OnInit {
     image: [
       { type: 'required', message: 'La foto es obligatoria' },
     ],
-    description:[
-      { type: 'requiere', message: 'la descripción es obligatoria'},
+    description: [
+      { type: 'requiere', message: 'la descripción es obligatoria' },
     ]
   }
   constructor(
@@ -30,7 +30,7 @@ export class AddPostModalPage implements OnInit {
     private postService: PostService,
     private storage: Storage,
     private modalController: ModalController
-  ) { 
+  ) {
     this.addPostForm = this.formBuilder.group({
       description: new FormControl('', Validators.compose([
         Validators.required,
@@ -44,12 +44,16 @@ export class AddPostModalPage implements OnInit {
   ngOnInit() {
   }
 
-  async uploadPhone(){
+  cancel() {
+    this.modalController.dismiss()
+  }
+
+  async uploadPhone() {
     console.log('Upload Photo');
     const uploadPhone = await Camera.getPhoto({
       resultType: CameraResultType.DataUrl,
       source: CameraSource.Photos,
-      quality:100
+      quality: 100
     });
     this.post_image = uploadPhone.dataUrl;
     this.addPostForm.patchValue({
@@ -57,22 +61,22 @@ export class AddPostModalPage implements OnInit {
     });
   }
 
-  async addPost(post_data: any){
+  async addPost(post_data: any) {
     console.log('Add Post');
     console.log(post_data);
-    const user = await this.storage.get('user') 
+    const user = await this.storage.get('user')
     const post_param = {
       post: {
         description: post_data.description,
         image: post_data.image,
         user_id: user.id
-      } 
+      }
     }
     console.log(post_param, 'post para enviar')
     this.postService.createPost(post_param).then(
       (data: any) => {
         console.log(data, 'post creado');
-        this.modalController.dismiss({null: null});
+        this.modalController.dismiss({ null: null });
       },
       (error) => {
         console.log(error, 'error');

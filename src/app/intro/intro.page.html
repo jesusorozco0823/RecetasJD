@@ -1,31 +1,23 @@
 <ion-content>
-  <swiper-container
-  slides-per-view="1"
-  pagination="true"
-  >
+  <swiper-container slides-per-view="1" pagination="true">
     <swiper-slide class="bg-color-slide">
       <h1 class="title1"><ion-icon name="cut-outline"></ion-icon> High Fade In V</h1>
       <img src="assets/images/Captura.PNG">
-      <p></p>
     </swiper-slide>
     <swiper-slide>
       <h1 class="title1"><ion-icon name="cut-outline"></ion-icon> Medium Fade</h1>
       <img src="assets/images/corte.jpg">
-      <ion-icon name="battery-charging-outline"></ion-icon>
-      <p></p>
     </swiper-slide>
     <swiper-slide>
       <h1 class="title1"><ion-icon name="cut-outline"></ion-icon> Medium Fade</h1>
       <img src="assets/images/corte.jpg">
-      <ion-icon name="battery-charging-outline"></ion-icon>
-      <p></p>
     </swiper-slide>
     <swiper-slide>
       <ion-icon name="close" class="close-icon" (click)="finish()"></ion-icon>
       <h1 class="title1"><ion-icon name="cut-outline"></ion-icon> Low Fade</h1>
       <img src="assets/images/CorteFace.jpg">
       <p></p>
-      <ion-button  (click)="finish()">Llevame al home</ion-button>
+      <ion-button color="danger" (click)="finish()">Llevame al home</ion-button>
     </swiper-slide>
   </swiper-container>
 </ion-content>

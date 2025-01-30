@@ -1,37 +1,65 @@
-<ion-content class="login">
+<ion-content color="primary" class="login">
   <ion-avatar class="userlogin">
     <img alt="Silhouette of a person's head" src="/assets/images/logo.jpg" />
   </ion-avatar>
   <br>
   <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)" class="formlogin">
-    <ion-input label="Correo" type="email" label-placement="floating" fill="solid" placeholder="Example@email.com" formControlName="email"></ion-input>
-    <div>
-      <ng-container *ngFor="let error of FormErros.email">
-        <ion-label color="danger" 
-        *ngIf="(loginForm.get('email')?.hasError(error.type) && loginForm.get('email')?.dirty)">
-          {{ error.message }}
-        </ion-label>
-      </ng-container>
-    </div>
-    <ion-input label="Contraseña" type="password" label-Placement="floating" fill="solid" placeholder="Password" formControlName="password"></ion-input>
-    <div>
-      <ng-container *ngFor="let error of FormErros.password">
-        <ion-label color="danger" 
-        *ngIf="(loginForm.get('password')?.hasError(error.type) && loginForm.get('password')?.dirty)">
-          {{ error.message }}
-        </ion-label>
-      </ng-container>
-    </div>
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="12">
+          <ion-input class="global-input" label="Correo" type="email" label-placement="floating" fill="solid"
+            placeholder="Example@email.com" formControlName="email"></ion-input>
+          <div class="global-container-label-message">
+            <ng-container *ngFor="let error of FormErros.email">
+              <ion-label color="light"
+                *ngIf="(loginForm.get('email')?.hasError(error.type) && loginForm.get('email')?.dirty)">
+                <ion-icon slot="start" color="danger" name="close-circle"></ion-icon>
+                {{ error.message }}
+              </ion-label>
+            </ng-container>
+          </div>
+        </ion-col>
+        <ion-col size="12">
+          <ion-input class="global-input" label="Contraseña" type="password" label-Placement="floating" fill="solid"
+            placeholder="Password" formControlName="password"></ion-input>
+          <div class="global-container-label-message">
+            <ng-container *ngFor="let error of FormErros.password">
+              <ion-label color="light"
+                *ngIf="(loginForm.get('password')?.hasError(error.type) && loginForm.get('password')?.dirty)">
+                <ion-icon slot="start" color="danger" name="close-circle"></ion-icon>
+                {{ error.message }}
+              </ion-label>
+            </ng-container>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" class="d-flex">
+          <ion-button color="danger" shape="round" type="submit" [disabled]="!loginForm.valid">
+            <h3>Ingresar</h3>
+            <ion-icon slot="end" name="log-in-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
     <br>
-    <ion-button color="light" shape="round" type="submit" [disabled]="!loginForm.valid">
-      <h2>INICIO</h2>
-    </ion-button>
-    <br>
-   
-    <a href="/register" class="registro"><h5>REGISTRO</h5></a>
-    <h5>¿olvido su Contraseña? </h5>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12" class="d-flex">
+          <ion-button fill="clear" href="/register">
+            Registrate
+            <!-- <ion-icon slot="end" name="arrow-forward-circle-outline"></ion-icon> -->
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <h5>¿Olvido su contraseña? </h5>
     <!-- <ion-button color="light" shape="round" (click)="Register()">Registrese</ion-button> -->
   </form>
-  
-  <p>{{errorMessage}}</p>
+
+  <!-- <p>{{errorMessage}}</p> -->
+  <ion-toast [isOpen]="isToastOpen" [message]=" errorMessage" [duration]="5000"
+    (didDismiss)="setOpenToast(false)"></ion-toast>
 </ion-content>

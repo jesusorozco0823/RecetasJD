@@ -1,18 +1,34 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons>
       <ion-menu-button></ion-menu-button>
+      <ion-title>Account</ion-title>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-title>{{user_data.name}} {{user_data.last_name}}</ion-title>
-  <br>
-  <ion-avatar (click)="takePhoto()">
-    <img [src]="user_data.image ? user_data.image : '/assets/img/defaul-avatar.jpeg'">
-  </ion-avatar>
-  <p>Usuario: {{user_data.username}}</p>
-  <p>Seguidores: {{user_data.followed_users.length}}</p>
-  <p>Siguendo: {{user_data.following_users.length}}</p>
+<ion-content class="ion-padding">
+  <ion-card color="light">
+    <div class="img-wrapper">
+      <img [src]="user_data.image ? user_data.image : '/assets/img/defaul-avatar.jpeg'">
+      <ion-button (click)="takePhoto()" color="primary">
+        <ion-icon slot="icon-only" name="camera-outline" color="light">
+        </ion-icon>
+      </ion-button>
+    </div>
+    <ion-card-content class="ion-text-center">
+      <h2>
+        <strong>
+          {{user_data.name |titlecase}} {{user_data.last_name | titlecase}}
+        </strong>
+      </h2>
+      <ion-text color="medium">
+        <div class="d-flex ion-justify-content-center">
+          <p><strong>{{user_data.followed_users.length}}</strong> Seguidores</p>
+          &nbsp;&nbsp;
+          <p><strong>{{user_data.following_users.length}}</strong> Siguiendo</p>
+        </div>
+      </ion-text>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
