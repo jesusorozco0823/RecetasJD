@@ -18,20 +18,23 @@ export class MenuPage implements OnInit {
 
   ngOnInit() {
   }
-  closeMenu(){
+  closeMenu() {
     this.menu.close();
   }
-  log_out(){
+  log_out() {
     this.storage.remove("isUserloggeIn")
     this.navCtrl.navigateRoot("/login");
   }
-  account(){
+  account() {
     this.navCtrl.navigateRoot("/menu/account");
+    this.closeMenu()
   }
-  home(){
+  home() {
     this.navCtrl.navigateRoot("/menu/home");
+    this.closeMenu()
   }
-  intro(){
+  intro() {
     this.navCtrl.navigateRoot("/intro");
+    this.closeMenu()
   }
 }

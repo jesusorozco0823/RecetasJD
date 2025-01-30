@@ -5,7 +5,7 @@ import { AddPostModalPage } from '../add-post-modal/add-post-modal.page';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],  
+  styleUrls: ['home.page.scss'],
   standalone: false,
 })
 export class HomePage {
@@ -13,20 +13,33 @@ export class HomePage {
   constructor(
     private postService: PostService,
     private modalController: ModalController
-  ) {}
+  ) { }
 
-  ngOnInit(){
+  ngOnInit() {
     console.log('home page');
-    this.postService.getPosts().then((data: any) =>{
+    this.postService.getPosts().then((data: any) => {
       console.log(data);
-      this.posts = data;
+      this.posts = [];
+      data.filter((post: any) => {
+        this.posts.push({ ...post, showCompleteDescription: false });
+      })
+      console.log(this.posts);
     })
   }
-  async addPost(){
+
+  toggleTextDisplay(postId: any) {
+    this.posts.filter((post: any) => {
+      if (post.id == postId) {
+        post.showCompleteDescription = !post.showCompleteDescription;
+      }
+    })
+  }
+
+  async addPost() {
     console.log("add Post");
     const modal = await this.modalController.create({
       component: AddPostModalPage,
-      componentProps:{}
+      componentProps: {}
     });
     return await modal.present();
   }
