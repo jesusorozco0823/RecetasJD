@@ -24,6 +24,7 @@ export class HomePage {
     console.log('home page');
     this.loadPosts();
     this.postService.postCreated.subscribe((newPost: any)=>{
+      console.log(newPost);
       this.posts.unshift(newPost);
     })
   }

@@ -19,7 +19,7 @@
           <div (click)="uploadPhone()" class="d-flex">
             <img [src]="post_image ? post_image : 'https://cdn-icons-png.flaticon.com/512/4725/4725573.png'"
               width="50%">
-            <!-- <p *ngIf="!post_image">Haz click para subir la imagen</p> -->
+            <p *ngIf="!post_image">Haz click para subir la imagen</p>
           </div>
           <div>
             <ng-container *ngFor="let error of FormErros.image">

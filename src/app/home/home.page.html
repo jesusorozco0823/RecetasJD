@@ -8,8 +8,8 @@
 <ion-content>
   <ion-list>
     <ion-progress-bar type="indeterminate" *ngIf="isLoading"></ion-progress-bar>
-    <ion-card *ngFor="let post of posts">
-        <ion-card-header>
+    <ion-card *ngFor="let post of posts" class="instagram-card">
+        <!-- <ion-card-header>
             <ion-card-subtitle>
                 <ion-chip>
                     <ion-avatar>
@@ -19,13 +19,22 @@
                 </ion-chip>
             </ion-card-subtitle>
         </ion-card-header>
-        <img src="{{post.image}}" class="image-post" />
+        <img src="{{post.image}}" class="image-post" /> -->
+        <div class="image-container">
+          <img [src]="post.image" class="image-post" />
+          <div class="header-overlay">
+            <ion-avatar class="avatar">
+              <img [src]="post.user.image ? post.user.image : 'assets/avatar/avatar.png'" />
+            </ion-avatar>
+            <span class="username">{{ post.user.name | titlecase }}</span>
+          </div>
+        </div>
         <ion-card-content>
-        <p [ngClass]="(!post.showCompleteDescription) ? 'single-line-text' : 'full-text'">
-            {{post.description}}
-        </p>
-        <p *ngIf="post.description.length > 50" (click)="toggleTextDisplay(post.id)" color="primary">Ver
-        {{(!post.showCompleteDescription) ? 'más' : 'menos'}}</p>
+          <p [ngClass]="(!post.showCompleteDescription) ? 'single-line-text' : 'full-text'">
+              {{post.description}}
+          </p>
+          <p *ngIf="post.description.length > 50" (click)="toggleTextDisplay(post.id)" color="primary">Ver
+          {{(!post.showCompleteDescription) ? 'más' : 'menos'}}</p>
         </ion-card-content>
     </ion-card>
 
