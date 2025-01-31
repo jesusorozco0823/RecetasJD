@@ -24,7 +24,7 @@
         <p [ngClass]="(!post.showCompleteDescription) ? 'single-line-text' : 'full-text'">
             {{post.description}}
         </p>
-        <p *ngIf="post.description.length > 50" (click)="toggleTextDisplay(post.id)">Ver
+        <p *ngIf="post.description.length > 50" (click)="toggleTextDisplay(post.id)" color="primary">Ver
         {{(!post.showCompleteDescription) ? 'más' : 'menos'}}</p>
         </ion-card-content>
     </ion-card>

@@ -11,10 +11,90 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">edit-user-modal</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+
+  <!-- <form action="">
+    <ion-input label="Nombre" label-placement="floating" fill="solid" ></ion-input>
+    <ion-input label="Apellido" label-placement="floating" fill="solid" placeholder="castro"></ion-input>
+    <br>
+    
+    <ion-button color="light" shape="round" type="submit" (click)="updateUser()" >Actualizar</ion-button>
+    <ion-button color="light" shape="round" type="submit" (click)="cancela()" >Cancelar</ion-button>
+  </form> -->
+
+  <form [formGroup]="updateUserForm" (ngSubmit)="updateUser(updateUserForm.value)">
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="12">
+          <ion-avatar (click)="presentPhotoOptions()" class="image">
+            <img [src]="user_data.image ? user_data.image : '/assets/img/default-avatar.jpeg'">
+          </ion-avatar>
+          <div class="global-container-label-message">
+            <ng-container *ngFor="let error of FormErros.name">
+              <ion-label color="light"
+                *ngIf="(updateUserForm.get('name')?.hasError(error.type) && updateUserForm.get('name')?.dirty)">
+                {{ error.message }}
+              </ion-label>
+            </ng-container>
+          </div>
+        </ion-col>
+        <ion-col size="12">
+          <ion-input class="global-input" label="Nombre" label-placement="floating" fill="solid"
+            placeholder="Digite su nombre" formControlName="name"></ion-input>
+          <div class="global-container-label-message">
+            <ng-container *ngFor="let error of FormErros.name">
+              <ion-label color="light"
+                *ngIf="(updateUserForm.get('name')?.hasError(error.type) && updateUserForm.get('name')?.dirty)">
+                {{ error.message }}
+              </ion-label>
+            </ng-container>
+          </div>
+        </ion-col>
+        <ion-col size="12">
+          <ion-input class="global-input" label="Apellido" label-placement="floating" fill="solid"
+            placeholder="Digite su apellido" formControlName="last_name"></ion-input>
+          <div class="global-container-label-message">
+            <ng-container *ngFor="let error of FormErros.last_name">
+              <ion-label color="light"
+                *ngIf="(updateUserForm.get('last_name')?.hasError(error.type) && updateUserForm.get('last_name')?.dirty)">
+                {{ error.message }}
+              </ion-label>
+            </ng-container>
+          </div>
+        </ion-col>
+        
+        
+        <ion-col size="12" class="d-flex">
+          <ion-button color="danger" shape="round" type="submit" [disabled]="!updateUserForm.valid">
+            <h3>Actualizar</h3>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form> 
+
+
+
+  <!-- <ion-card color="light">
+    <ion-text color="medium">
+      <div class="img-wrapper">
+        <img [src]="user_data.image ? user_data.image : '/assets/images/perfil.png'">
+        <ion-fab-button (click)="presentPhotoOptions()" color="primary">
+          <ion-icon name="camera-outline"></ion-icon>
+        </ion-fab-button>
+       
+      </div>
+    </ion-text>
+    
+    <ion-card-content class="ion-text-center">
+      <h2>
+        <strong>
+          {{user_data.name |titlecase}} {{user_data.last_name | titlecase}}
+        </strong>
+      </h2>
+     
+    </ion-card-content>
+  </ion-card> -->
+
+
 </ion-content>

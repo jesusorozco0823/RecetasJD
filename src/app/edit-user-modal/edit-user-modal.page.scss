@@ -11,3 +11,59 @@ ion-header {
         color: white;
     }
 }
+.image{
+  margin: 20px auto;
+  width: 120px;
+  height: 120px;
+  border: 3px solid white; /* Borde dorado alrededor del avatar */
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra elegante */
+}
+ion-content {
+  ion-card {
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+    overflow: visible;
+    margin: 16px 0 24px;
+    position: relative;
+    padding-top: 40px;
+
+    .img-wrapper {
+      position: relative;
+      left: 50%;
+      top: -20px;
+      transform: translateX(-50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        border-radius: 10px;
+        width: 120px;
+        height: 120px;
+      }
+
+      ion-button {
+        --border-width: 1px;
+        --border-color: var(--ion-color-light-shade);
+        --border-style: solid;
+        --padding-start: 0;
+        --padding-end: 0;
+        --padding-bottom: 0;
+        --padding-top: 0;
+
+        --border-radius: 50%;
+        height: 26px;
+        width: 26px;
+
+        position: absolute;
+        left: 60%;
+        bottom: -25px;
+
+        ion-icon {
+          width: 18px;
+          height: 18px;
+        }
+      }
+    }
+  }
+}

@@ -22,7 +22,13 @@ export class MenuPage implements OnInit {
     this.menu.close();
   }
   log_out() {
-    this.storage.remove("isUserloggeIn")
+    this.storage.remove("isUserloggeIn").then(() => {
+      console.log("Key 'isUserloggeIn' has been removed");
+    }).catch(error => {
+      console.error("Error removing key: ", error);
+    });
+    
+    // this.storage.remove("isUserloggeIn")
     this.navCtrl.navigateRoot("/login");
   }
   account() {

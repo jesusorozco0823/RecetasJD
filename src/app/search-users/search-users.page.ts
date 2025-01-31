@@ -63,7 +63,6 @@ export class SearchUsersPage implements OnInit {
   }
 
   follow(followee_id: any){
-    console.log('follow', followee_id);
     const user_id = this.current_user.id;
     this.userService.followUser(user_id, followee_id).then(
       (data: any) => {
@@ -84,8 +83,25 @@ export class SearchUsersPage implements OnInit {
       });
   }
 
-  unfollow(user_id: any){
-    console.log('unfollow', user_id);
+  unfollow(followee_id: any){
+    const user_id = this.current_user.id;
+    this.userService.unFollow(user_id, followee_id).then(
+      (data: any) => {
+        console.log(data);
+        this.users = this.users.map((user: any) => {
+          if (user.id == followee_id){
+            return {
+              ...user,
+              is_following: false
+            }
+          }
+          return user;
+        });
+      }
+    ).catch(
+      (error) => {
+        console.log(error);
+      });
   }
 
   toggleFollow(user: any){
