@@ -27,11 +27,23 @@ export class AccountPage implements OnInit {
     private userService: UserService,
     private storage: Storage,
     public alertController: AlertController,
-    private modalController: ModalController
+    private modalController: ModalController,
   ) { }
 
   async ngOnInit() {
     let user: any = await this.storage.get('user');
+    this.userService.UpdateDataUser.subscribe((newPost: any)=>{
+      if (newPost.user.last_name) {
+        this.user_data.last_name = newPost.user.last_name;
+      }
+      if (newPost.user.name) {
+        this.user_data.name = newPost.user.name;
+      }
+      if (newPost.user.image) {
+        this.user_data.image = newPost.user.image;
+      }
+    })
+    
     this.userService.getUser(user.id).then(
       (data: any) =>{
         console.log(data);

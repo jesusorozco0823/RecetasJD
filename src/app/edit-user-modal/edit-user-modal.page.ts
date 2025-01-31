@@ -119,10 +119,11 @@ export class EditUserModalPage implements OnInit {
     this.user_data.last_name = formValues.last_name;
     this.userService.updateDataUser(this.user_data).then(
       (data: any) => {
-        console.log(data);
+        console.log(data, 'post creado');
+        this.modalController.dismiss({null: null});
         this.userService.UpdateDataUser.emit(data);
         this.updateUserForm.reset();
-        this.modalController.dismiss(data);
+        this.modalController.dismiss();
       }
     ).catch(
       (error) => {

@@ -79,6 +79,7 @@ export class UserService {
   }
   listUsers(page: number, perPage: number, query: string = ''){
     const url = `${this.urlServer}/list_users?page=${page}&per_page=${perPage}&query=${query}`;
+    console.log(url);
     return this.http.get(url).toPromise();
   }
 

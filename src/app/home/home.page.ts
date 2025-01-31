@@ -47,6 +47,7 @@ export class HomePage {
 
   loadPosts(event?: any){
     console.log('Load Posts');
+    console.log(this.page, this.limit);
     this.isLoading = true;
     this.postService.getPosts(this.page, this.limit).then(
       (data: any)=>{
