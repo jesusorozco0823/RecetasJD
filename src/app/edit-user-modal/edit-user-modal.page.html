@@ -12,16 +12,6 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-
-  <!-- <form action="">
-    <ion-input label="Nombre" label-placement="floating" fill="solid" ></ion-input>
-    <ion-input label="Apellido" label-placement="floating" fill="solid" placeholder="castro"></ion-input>
-    <br>
-    
-    <ion-button color="light" shape="round" type="submit" (click)="updateUser()" >Actualizar</ion-button>
-    <ion-button color="light" shape="round" type="submit" (click)="cancela()" >Cancelar</ion-button>
-  </form> -->
-
   <form [formGroup]="updateUserForm" (ngSubmit)="updateUser(updateUserForm.value)">
     <ion-grid fixed>
       <ion-row>
@@ -63,7 +53,6 @@
           </div>
         </ion-col>
         
-        
         <ion-col size="12" class="d-flex">
           <ion-button color="danger" shape="round" type="submit" [disabled]="!updateUserForm.valid">
             <h3>Actualizar</h3>
@@ -72,29 +61,4 @@
       </ion-row>
     </ion-grid>
   </form> 
-
-
-
-  <!-- <ion-card color="light">
-    <ion-text color="medium">
-      <div class="img-wrapper">
-        <img [src]="user_data.image ? user_data.image : '/assets/images/perfil.png'">
-        <ion-fab-button (click)="presentPhotoOptions()" color="primary">
-          <ion-icon name="camera-outline"></ion-icon>
-        </ion-fab-button>
-       
-      </div>
-    </ion-text>
-    
-    <ion-card-content class="ion-text-center">
-      <h2>
-        <strong>
-          {{user_data.name |titlecase}} {{user_data.last_name | titlecase}}
-        </strong>
-      </h2>
-     
-    </ion-card-content>
-  </ion-card> -->
-
-
 </ion-content>
