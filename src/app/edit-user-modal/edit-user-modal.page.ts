@@ -6,8 +6,7 @@ import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import { AlertController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../services/auth.service';
-import { NavController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
 defineCustomElements(window);
 
 @Component({
@@ -39,8 +38,7 @@ export class EditUserModalPage implements OnInit {
     public alertController: AlertController,
     private modalController: ModalController,
     private formBuilder: FormBuilder,
-    private authService: AuthService,
-    private navCrtl: NavController
+    private toastController: ToastController,
   ) { 
     this.updateUserForm = this.formBuilder.group({
           name: new FormControl('', Validators.compose([
@@ -66,16 +64,24 @@ export class EditUserModalPage implements OnInit {
       }
     ).catch(
       (error) =>{
-        console.log(error);
+        this.showToast("Ocurrio un error al recuperar el usuario", "danger");
       }
     )
+  }
+  async showToast(message: string, color: string = 'primary') {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 3000,
+      position: 'bottom',
+      color: color
+    });
+    toast.present();
   }
   cancel() {
     this.modalController.dismiss()
   }
 
   async takePhoto(source: CameraSource){
-    console.log('take Photo');
     const capturedPhoto = await Camera.getPhoto({
       resultType: CameraResultType.DataUrl,
       source: source,
@@ -106,7 +112,7 @@ export class EditUserModalPage implements OnInit {
           text: "Cancelar",
           role: "cancel",
           handler: () => {
-            console.log('Cancelado');
+            this.showToast("Cancelado", "warning");
           }
         }
       ]
@@ -119,7 +125,7 @@ export class EditUserModalPage implements OnInit {
     this.user_data.last_name = formValues.last_name;
     this.userService.updateDataUser(this.user_data).then(
       (data: any) => {
-        console.log(data, 'post creado');
+        this.showToast("Usuario actualizado correctamente", "success");
         this.modalController.dismiss({null: null});
         this.userService.UpdateDataUser.emit(data);
         this.updateUserForm.reset();
@@ -127,7 +133,7 @@ export class EditUserModalPage implements OnInit {
       }
     ).catch(
       (error) => {
-        console.log(error);
+        this.showToast("Ocurrio un error al actualizar el usuario", "danger");
       }
     )
   }

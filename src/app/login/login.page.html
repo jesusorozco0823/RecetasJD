@@ -60,6 +60,6 @@
   </form>
 
   <!-- <p>{{errorMessage}}</p> -->
-  <ion-toast [isOpen]="isToastOpen" [message]=" errorMessage" [duration]="5000"
+  <ion-toast color="danger" [isOpen]="isToastOpen" [message]=" errorMessage" [duration]="5000"
     (didDismiss)="setOpenToast(false)"></ion-toast>
 </ion-content>

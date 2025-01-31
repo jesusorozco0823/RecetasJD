@@ -109,7 +109,6 @@ export class AccountPage implements OnInit {
   }
 
   async editUser() {
-    console.log("Editar Usuario");
     const modal = await this.modalController.create({
       component: EditUserModalPage,
       componentProps: {}

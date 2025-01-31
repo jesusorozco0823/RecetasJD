@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Storage } from '@ionic/storage-angular';
+import { ToastController } from '@ionic/angular';
+import { concat } from 'rxjs';
+
 @Component({
   selector: 'app-search-users',
   templateUrl: './search-users.page.html',
@@ -17,17 +20,28 @@ export class SearchUsersPage implements OnInit {
 
   constructor(
     private userService: UserService,
-    private storage: Storage
+    private storage: Storage,
+    private toastController: ToastController
   ) { }
 
   ngOnInit() {
     this.loadUsers();
   }
 
+  async showToast(message: string, color: string = 'primary') {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 3000,
+      position: 'bottom',
+      color: color
+    });
+    toast.present();
+  }
+
   async loadUsers(event?: any){
     this.current_user = await this.storage.get('user');
     const followingUers = this.current_user.followees || [];
-    console.log('followingUers', followingUers);
+  
     this.userService.listUsers(this.page, this.limit, this.query).then(
       (data: any) => {
         if (data.users.length > 0){
@@ -37,7 +51,6 @@ export class SearchUsersPage implements OnInit {
           }));
 
           this.users = [...this.users, ...updateUsers];
-          console.log('users', this.users);
           this.page++;
         }else{
           this.hasHoreUsers = false;
@@ -48,7 +61,7 @@ export class SearchUsersPage implements OnInit {
       }
     ).catch(
       (error) => {
-        console.log(error);
+        this.showToast("Ocurrio un error al recuperar la lista de usuarios", "danger");
         event.target.complete();
       }
     );
@@ -69,6 +82,7 @@ export class SearchUsersPage implements OnInit {
         console.log(data);
         this.users = this.users.map((user: any) => {
           if (user.id == followee_id){
+            this.showToast("Ahora sigues a " + user.name + " " + user.last_name, "success");
             return {
               ...user,
               is_following: true
@@ -76,10 +90,11 @@ export class SearchUsersPage implements OnInit {
           }
           return user;
         });
+       
       }
     ).catch(
       (error) => {
-        console.log(error);
+        this.showToast(error, "danger");
       });
   }
 
@@ -90,6 +105,7 @@ export class SearchUsersPage implements OnInit {
         console.log(data);
         this.users = this.users.map((user: any) => {
           if (user.id == followee_id){
+            this.showToast("Ahora has dejado de seguir a " + user.name + " " + user.last_name, "warning");
             return {
               ...user,
               is_following: false
@@ -100,7 +116,7 @@ export class SearchUsersPage implements OnInit {
       }
     ).catch(
       (error) => {
-        console.log(error);
+        this.showToast(error, "danger");
       });
   }
 

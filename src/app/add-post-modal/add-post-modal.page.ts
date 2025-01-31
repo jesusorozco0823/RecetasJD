@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, FormControl, Validators, ValueChangeEvent } fro
 import { PostService } from '../services/post.service';
 import { Storage } from '@ionic/storage-angular';
 import { ModalController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
 defineCustomElements(window);
 
 @Component({
@@ -29,7 +30,8 @@ export class AddPostModalPage implements OnInit {
     private formBuilder: FormBuilder,
     private postService: PostService,
     private storage: Storage,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private toastController: ToastController
   ) {
     this.addPostForm = this.formBuilder.group({
       description: new FormControl('', Validators.compose([
@@ -49,7 +51,6 @@ export class AddPostModalPage implements OnInit {
   }
 
   async uploadPhone() {
-    console.log('Upload Photo');
     const uploadPhone = await Camera.getPhoto({
       resultType: CameraResultType.DataUrl,
       source: CameraSource.Photos,
@@ -61,9 +62,17 @@ export class AddPostModalPage implements OnInit {
     });
   }
 
+  async showToast(message: string, color: string = 'primary') {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 3000,
+      position: 'bottom',
+      color: color
+    });
+    toast.present();
+  }
+
   async addPost(post_data: any) {
-    console.log('Add Post');
-    console.log(post_data);
     const user = await this.storage.get('user')
     const post_param = {
       post: {
@@ -72,10 +81,10 @@ export class AddPostModalPage implements OnInit {
         user_id: user.id
       }
     }
-    console.log(post_param, 'post para enviar')
+    
     this.postService.createPost(post_param).then(
       (data: any) => {
-        console.log(data, 'post creado');
+        this.showToast("post creado correctamente", "success");
         this.modalController.dismiss({ null: null });
         data.user = {
           id: user.id,
@@ -88,7 +97,7 @@ export class AddPostModalPage implements OnInit {
         this.modalController.dismiss();
       },
       (error) => {
-        console.log(error, 'error');
+        this.showToast("Ocurrio un error al crear el post", "danger");
       }
     );
   }

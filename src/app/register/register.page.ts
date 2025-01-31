@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';// importamos para hacer el formulario
 import { AuthService } from '../services/auth.service';
 import { NavController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
@@ -37,7 +38,8 @@ export class RegisterPage implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private navCrtl: NavController
+    private navCrtl: NavController,
+    private toastController: ToastController
   ) { 
     this.registerForm = this.formBuilder.group({
       name: new FormControl('', Validators.compose([
@@ -62,16 +64,24 @@ export class RegisterPage implements OnInit {
       ]))
     })
   }
-
+  async showToast(message: string, color: string = 'primary') {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 3000,
+      position: 'bottom',
+      color: color
+    });
+    toast.present();
+  }
   ngOnInit() {
   }
   registerUser(registerData : any){
     this.authService.register(registerData).then(res =>{
-      console.log(res);
+      this.showToast("Usuario registrado correctamente", "success");
       this.errorMessage= '';
       this.navCrtl.navigateForward('/login');
     }).catch(err =>{
-      console.log(err);
+      this.showToast("Ocurrio un error al crear el usuario", "danger");
       this.errorMessage = err;
     })
   }
